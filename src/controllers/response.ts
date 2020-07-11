@@ -38,7 +38,7 @@ class Responses {
 		if(newsList.length == 0) return this.msg.channel.send(`:loudspeaker:  Não encontrei nenhuma notícia recente sobre isso.`)
 		
 		newsList.map(news => {
-			this.msg.channel.send(`\n\n**${news.title}** \n*${news.description}*\n`)
+			this.msg.channel.send(`\n\n**${news.title}** \n*${news.description}*\n`, {files: [news.urlToImage]})
 		})
 	}
 
