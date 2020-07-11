@@ -1,28 +1,31 @@
 import Discord from 'discord.js'
 import Response from './response'
 
+
 let response;
 
 interface ICommand {
 	[key: string]: any 
 }
 
-function getCommandMethod(msg: Discord.Message, command: string) {
-	response = new Response(msg)
+export interface IMessagedProcessed {
+	command: string
+	args: string[]
+}
+
+function getCommandMethod(msg: Discord.Message, info: IMessagedProcessed) {
+	response = new Response(msg, info.args)
 
 	const commands:ICommand = {
-		bola8: () => { return response.ball()},
-		ping: () => { return response.ping()}
+		bola8: () => response.ball(),
+		ping: () => response.ping(),
+		news: () => response.news(),
+		help: () => response.help()
 	}
 
-	const method = commands[command]
+	const method = commands[info.command]
 
-	if(method) {
-		method()
-	} else {
-		msg.channel.send('Use um comando válido, cabeça de bagre!')
-	}
-		
+	method ? method() : msg.channel.send('Use um comando válido, cabeça de bagre!')		
 }
 
 
