@@ -17,7 +17,7 @@ class NewsAPI {
 			language: 'pt',
 			page: 1,
 			pageSize: 5,
-			sortBy: 'relevancy'
+			sortBy: ['publishedAt', 'popularity','relevancy']
 		})
 
 		return articles
