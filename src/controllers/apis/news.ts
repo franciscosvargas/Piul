@@ -12,9 +12,12 @@ class NewsAPI {
 
 	async search() {
 
-		const { articles } = await api.v2.topHeadlines({
-			sources: 'google-news-br, globo',
-			q: this.searchTerm,
+		const { articles } = await api.v2.everything({
+			qInTitle: this.searchTerm,
+			language: 'pt',
+			page: 1,
+			pageSize: 5,
+			sortBy: 'relevancy'
 		})
 
 		return articles
