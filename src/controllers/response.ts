@@ -1,6 +1,7 @@
 import Discord from 'discord.js'
 
 import ballPhrases from '../assets/phrases/8ball'
+import messages from '../assets/phrases/messages'
 
 import NewsAPI from './apis/news'
 
@@ -15,27 +16,27 @@ class Responses {
 	}
 	
 	ball() {
-		if(this.args.length == 0) return this.msg.channel.send('Sem uma pergunta eu não posso ajudar né?!\n`-bola8 sua pergunta`')
+		if(this.args.length == 0) return this.msg.channel.send(messages.ball)
 
 		const x = Math.floor(Math.random() * 13);
 		return this.msg.channel.send(ballPhrases[x])
 	}
 
 	ping() {
-		return this.msg.channel.send('Pong!  :ping_pong: ')
+		return this.msg.channel.send(messages.pong)
 	}
 
 	async news() {
-		if(this.args.length == 0) return this.msg.channel.send(':stop_sign: Me fala sobre o que você quer saber!\nExemplo: `-news corona virus`')
+		if(this.args.length == 0) return this.msg.channel.send(messages.news.missing)
+
+		//Join args array
 		const searchTerm = this.args.join(' ')
 
-		this.msg.channel.send(`:mag:  Estou procurando notícias sobre **${searchTerm}**...`)
+		this.msg.channel.send(`${messages.news.lookingFor} **${searchTerm}**...`)
 
-		const api = new NewsAPI(this.args)
+		const newsList = await NewsAPI(this.args)
 
-		const newsList = await api.search()
-
-		if(newsList.length == 0) return this.msg.channel.send(`:loudspeaker:  Não encontrei nenhuma notícia recente sobre isso.`)
+		if(newsList.length == 0) return this.msg.channel.send(messages.news.notFound)
 		
 		newsList.map(news => {
 			this.msg.channel.send(`\n\n**${news.title}** \n*${news.description}*\n`, {files: [news.urlToImage]})
@@ -43,7 +44,15 @@ class Responses {
 	}
 
 	help() {
-		return this.msg.channel.send('Saiba mais sobre mim em: https://github.com/franciscosvargas/Piul')
+		return this.msg.channel.send(messages.help)
+	}
+
+	water() {
+		this.msg.channel.send(':cup_with_straw: Ativando alertas de hidratação!')
+
+		setInterval(() => {
+			this.msg.channel.send(':cup_with_straw: Beba água')
+		}, 1800000)
 	}
 }
 

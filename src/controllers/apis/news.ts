@@ -2,27 +2,17 @@ import Api from 'newsapi'
 
 const api = new Api(process.env.NEWS_API_KEY)
 
-class NewsAPI {
+async function search(searchTerm: string[]) {
 
-	searchTerm: string[]
+	const { articles } = await api.v2.everything({
+		qInTitle: searchTerm,
+		language: 'pt',
+		page: 1,
+		pageSize: 5,
+		sortBy: ['publishedAt', 'popularity','relevancy']
+	})
 
-	constructor(SearchTerm: string[]) {
-		this.searchTerm = SearchTerm
-	}
-
-	async search() {
-
-		const { articles } = await api.v2.everything({
-			qInTitle: this.searchTerm,
-			language: 'pt',
-			page: 1,
-			pageSize: 5,
-			sortBy: ['publishedAt', 'popularity','relevancy']
-		})
-
-		return articles
-	}
-
+	return articles
 }
 
-export default NewsAPI
+export default search

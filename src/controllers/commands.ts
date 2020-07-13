@@ -20,7 +20,8 @@ function getCommandMethod(msg: Discord.Message, info: IMessagedProcessed) {
 		bola8: () => response.ball(),
 		ping: () => response.ping(),
 		news: () => response.news(),
-		help: () => response.help()
+		help: () => response.help(),
+		water: () => response.water()
 	}
 
 	const method = commands[info.command]
