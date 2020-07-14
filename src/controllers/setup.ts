@@ -11,7 +11,10 @@ class Setup {
 	}
 
 	public on() {
-		this.changeStatus()
+		setInterval(() => {
+			this.changeStatus()
+		}, 10000)
+		
 	}
 
 	private changeStatus() {
