@@ -4,6 +4,7 @@ import ballPhrases from '../assets/phrases/8ball'
 import messages from '../assets/phrases/messages'
 
 import NewsAPI from './apis/news'
+import search from './apis/news'
 
 class Responses {
 
@@ -18,7 +19,7 @@ class Responses {
 	ball() {
 		if(this.args.length == 0) return this.msg.channel.send(messages.ball)
 
-		const x = Math.floor(Math.random() * 13);
+		const x = Math.floor(Math.random() * 21);
 		return this.msg.channel.send(ballPhrases[x])
 	}
 
@@ -34,7 +35,7 @@ class Responses {
 
 		this.msg.channel.send(`${messages.news.lookingFor} **${searchTerm}**...`)
 
-		const newsList = await NewsAPI(this.args)
+		const newsList = await NewsAPI(searchTerm)
 
 		if(newsList.length == 0) return this.msg.channel.send(messages.news.notFound)
 		
@@ -51,8 +52,8 @@ class Responses {
 		this.msg.channel.send(':cup_with_straw: Ativando alertas de hidratação!')
 
 		setInterval(() => {
-			this.msg.channel.send(':cup_with_straw: Beba água')
-		}, 1800000)
+			this.msg.channel.send(':cup_with_straw: Beba água!')
+		}, 3600000)
 	}
 }
 
