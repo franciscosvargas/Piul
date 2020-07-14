@@ -8,8 +8,16 @@ export default [
 	'Se nem você sabe, quem dirá eu.',
 	'Sim!',
 	'Não!',
+	'De jeito nenhum',
+	'E eu é que tenho que saber?',
+	'Não sou capaz de opinar..',
+	'Você tá querendo polêmica???',
+	'Sei de nada',
+	'Jamais',
+	'Sim, mas eu não disse nada. Viu?',
 	'Sem sombra de dúvidas.',
 	'Ainda não sei responder sobre isso.',
-	'Em casa de ferreiro o espeto é de pau. Então, vai com que é tua.',
+	'Deixa de baitolagem',
+	'Em casa de ferreiro o espeto é de pau. Então, vai que é tua.',
 	'Você já sabe a resposta.'
 ]
