@@ -58,6 +58,11 @@ class Responses {
 	}
 
 	async mention() {
+		const x = Math.floor(Math.random() * 10);
+		return this.msg.channel.send(mentions[x])
+	}
+
+	async question() {
 		try {
 			const id = await Watson.getSessionID()
 			const message = await Watson.message(this.args.join(" "), id)
@@ -66,9 +71,6 @@ class Responses {
 		} catch (error) {
 			return this.msg.channel.send("Aconteceu algum erro, eu volto já.")
 		}
-		
-		//const x = Math.floor(Math.random() * 10);
-		//return this.msg.channel.send(mentions[x])
 	}
 }
 

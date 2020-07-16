@@ -24,18 +24,22 @@ class Message {
 	}
 
 	public mention() {
-		const command = 'mentionedMe'
+		const isQuestion = this.msg.content.startsWith('<@!725743066899546144>')
+
+		const command = isQuestion ? 'question' : 'mentionedMe'
 		const args = this.getArgs()
 
 		return processResponse(this.msg, {command, args})
 	}
 
 	private isValid(): boolean {
+
+		console.log(this.msg.content)
 		
 		if(this.msg.author.bot) 
 			return false
 
-		const containsCommand = this.msg.content.startsWith("-", 0);
+		const containsCommand = this.msg.content.startsWith("-", 0)
 
 		if(containsCommand) 
 			return true

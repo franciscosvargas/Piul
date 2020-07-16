@@ -22,7 +22,8 @@ function getCommandMethod(msg: Discord.Message, info: IMessagedProcessed) {
 		news: () => response.news(),
 		help: () => response.help(),
 		water: () => response.water(),
-		mentionedMe: () => response.mention()
+		mentionedMe: () => response.mention(),
+		question: () => response.question(),
 	}
 
 	const method = commands[info.command]
