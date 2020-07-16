@@ -2,6 +2,7 @@ import Discord from 'discord.js'
 
 import ballPhrases from '../assets/phrases/8ball'
 import messages from '../assets/phrases/messages'
+import mentions from '../assets/phrases/mentions'
 
 import NewsAPI from './apis/news'
 import search from './apis/news'
@@ -45,7 +46,7 @@ class Responses {
 	}
 
 	help() {
-		return this.msg.channel.send(messages.help)
+		return this.msg.channel.send(messages.help.about)
 	}
 
 	water() {
@@ -54,6 +55,11 @@ class Responses {
 		setInterval(() => {
 			this.msg.channel.send(':cup_with_straw: Beba água!')
 		}, 3600000)
+	}
+
+	mention() {
+		const x = Math.floor(Math.random() * 10);
+		return this.msg.channel.send(mentions[x])
 	}
 }
 

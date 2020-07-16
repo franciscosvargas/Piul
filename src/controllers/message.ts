@@ -23,6 +23,12 @@ class Message {
 			return processResponse(this.msg, {command, args})
 	}
 
+	public mention() {
+		const command = 'mentionedMe'
+		const args = this.getArgs()
+
+		return processResponse(this.msg, {command, args})
+	}
 
 	private isValid(): boolean {
 		
@@ -30,7 +36,15 @@ class Message {
 			return false
 
 		const containsCommand = this.msg.content.startsWith("-", 0);
-		return containsCommand
+
+		if(containsCommand) 
+			return true
+
+		const mentions = this.msg.mentions.users.toJSON()
+		const areMentioned = this.mentionsMe(mentions)
+
+		if(areMentioned) this.mention()
+		return false		
 	}
 
 	private getCommand(): string {
@@ -51,6 +65,11 @@ class Message {
 		args.splice(0, 1);
 		
 		return args
+	}
+
+	private mentionsMe(mentions): boolean {
+		const areMeMentioned = mentions.filter(mention => mention.username === 'Piul');
+		return areMeMentioned.length > 0 ? true : false
 	}
 
 }

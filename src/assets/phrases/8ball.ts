@@ -18,6 +18,5 @@ export default [
 	'Sem sombra de dúvidas.',
 	'Ainda não sei responder sobre isso.',
 	'Deixa de baitolagem',
-	'Em casa de ferreiro o espeto é de pau. Então, vai que é tua.',
 	'Você já sabe a resposta.'
 ]
