@@ -5,7 +5,7 @@ import messages from '../assets/phrases/messages'
 import mentions from '../assets/phrases/mentions'
 
 import NewsAPI from './apis/news'
-import search from './apis/news'
+import Watson from './apis/watson'
 
 class Responses {
 
@@ -57,9 +57,18 @@ class Responses {
 		}, 3600000)
 	}
 
-	mention() {
-		const x = Math.floor(Math.random() * 10);
-		return this.msg.channel.send(mentions[x])
+	async mention() {
+		try {
+			const id = await Watson.getSessionID()
+			const message = await Watson.message(this.args.join(" "), id)
+			Watson.deleteSession(id)
+			return this.msg.channel.send(message)
+		} catch (error) {
+			return this.msg.channel.send("Aconteceu algum erro, eu volto já.")
+		}
+		
+		//const x = Math.floor(Math.random() * 10);
+		//return this.msg.channel.send(mentions[x])
 	}
 }
 
