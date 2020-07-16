@@ -24,7 +24,8 @@ class Message {
 	}
 
 	public mention() {
-		const isQuestion = this.msg.content.startsWith('<@!725743066899546144>')
+		
+		const isQuestion = this.msg.content.startsWith('<@!725743066899546144>') || this.msg.content.startsWith('<@725743066899546144>')
 
 		const command = isQuestion ? 'question' : 'mentionedMe'
 		const args = this.getArgs()
