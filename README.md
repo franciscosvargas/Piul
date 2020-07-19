@@ -1,4 +1,4 @@
-<img src="https://github.com/franciscosvargas/Piul/readme-cover.png?raw=true" alt="Hello, my name is PIUL. Nice to meet you.">
+<img src="https://github.com/franciscosvargas/Piul/blob/master/readme-cover.png?raw=true" alt="Hello, my name is PIUL. Nice to meet you.">
 
 # 🙈&nbsp; About me
 My friends call me Piul. I am a funny Brazilian bot in development to automate, inform, remember and (not least) entertain [Discord](https://discord.com/) servers.
