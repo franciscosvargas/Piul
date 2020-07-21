@@ -2,6 +2,8 @@ import Discord from 'discord.js'
 
 import Phrases from '../assets/phrases/status'
 
+import { WaterAlert }from './services/water'
+
 class Setup {
 
 	bot: Discord.Client
@@ -11,6 +13,8 @@ class Setup {
 	}
 
 	public on() {
+		WaterAlert()
+
 		setInterval(() => {
 			this.changeStatus()
 		}, 10000)

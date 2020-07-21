@@ -45,9 +45,11 @@ class Watson {
 			  }
 			})
 			.then(res => {
+				console.log(res.result.output)
 			  message = res.result.output.generic[0].text
 			})
 			.catch(err => {
+				console.log(err)
 			  message = "(Erro) - Estou impossibilitado de responder"
 			});
 

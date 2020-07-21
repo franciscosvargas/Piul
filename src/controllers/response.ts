@@ -7,6 +7,8 @@ import mentions from '../assets/phrases/mentions'
 import NewsAPI from './apis/news'
 import Watson from './apis/watson'
 
+import { WaterAdd }from './services/water'
+
 class Responses {
 
 	msg: Discord.Message
@@ -50,11 +52,15 @@ class Responses {
 	}
 
 	water() {
-		this.msg.channel.send(':cup_with_straw: Ativando alertas de hidratação!')
 
-		setInterval(() => {
-			this.msg.channel.send(':cup_with_straw: Beba água!')
-		}, 3600000)
+		const msg = WaterAdd(this.msg.channel)
+
+		this.msg.channel.send(msg)
+		// this.msg.channel.send(':cup_with_straw: Ativando alertas de hidratação!')
+
+		// setInterval(() => {
+		// 	this.msg.channel.send(':cup_with_straw: Beba água!')
+		// }, 3600000)
 	}
 
 	async mention() {
